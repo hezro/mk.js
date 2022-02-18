@@ -9,7 +9,7 @@ app.configure(function () {
   app.use(express.static(__dirname + '/../game'));
 });
 
-server.listen(55555);
+server.listen(80);
 
 var Responses = {
     SUCCESS: 0,
