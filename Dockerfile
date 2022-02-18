@@ -1,4 +1,7 @@
-FROM node:14.19.0
+FROM node:14.19.0-alpine
+
+RUN apk add --no-cache imagemagick=7.1.0.16-r0 && rm -rf /var/cache/apk/*
+
 # Create the mk.js directory and copy in the app
 RUN mkdir /opt/mk.js
 COPY server/ /opt/mk.js/server/
