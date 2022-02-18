@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  mk:
+    build: .
+    ports:
+      - "80:80"
