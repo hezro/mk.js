@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Get Github ref
         run: |
@@ -49,7 +49,7 @@ jobs:
         run: snyk auth ${SNYK_TOKEN}
         
       # Monitor the container
-      - name: Scan Cli container scan
+      - name: Scan CLI container scan
         run: snyk container monitor ${IMAGE_NAME} --app-vulns
 
       # Run a snyk container test
