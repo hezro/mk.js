@@ -40,7 +40,8 @@ jobs:
 
       - name: Authenticate Snyk
         run: snyk auth ${SNYK_TOKEN}
-
+        
+      # Monitor the container
       - name: Scan Cli container scan
         run: snyk container monitor ${IMAGE_NAME} --app-vulns
 
