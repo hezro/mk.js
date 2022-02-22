@@ -6,8 +6,7 @@ on:
 
 jobs:
   snyk-pipeline:
-    runs-on: ubuntu-latest
-    name: Build Push Snyk Scan
+    runs-on: ubuntu-latest    
     env:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
