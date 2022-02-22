@@ -1,0 +1,46 @@
+name: Snyk container scan
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  snyk-pipeline:
+    runs-on: ubuntu-latest    
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      IMAGE_NAME: hezro/mk:latest
+      
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get Github ref 
+        run: |
+          echo ${GITHUB_REF#refs/*/}
+          echo ${GITHUB_REF:10}
+      
+      - name: Login DockerHUB
+        run: echo ${DOCKERHUB_TOKEN} | docker login -u ${DOCKERHUB_USER} --password-stdin
+        
+      - name: Build docker image
+        run: docker build . --file Dockerfile --tag ${IMAGE_NAME}
+        
+      - name: Push docker image
+        run: docker image push ${IMAGE_NAME}
+      
+      - name: Download Snyk
+        run: |
+          wget -O snyk https://static.snyk.io/cli/latest/snyk-linux
+          chmod +x ./snyk
+          mv ./snyk /usr/local/bin/
+          
+      - name: Authenticate Snyk
+        run: snyk auth ${SNYK_TOKEN}
+        
+      - name: Scan Cli container scan
+        run: snyk container monitor ${IMAGE_NAME} --app-vulns
+        
+      - name: Snyk Container Test
+        run: snyk container test ${IMAGE_NAME} --username=${DOCKERHUB_USER} --password=${DOCKERHUB_TOKEN}
