@@ -1,5 +1,6 @@
 FROM node:11.0.0
 
+# Install vulnerable packages
 RUN apt-get install -y imagemagick && apt-get update && apt-get install -y snapd
 
 # Create the mk.js directory and copy in the app
