@@ -18,6 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Testing Github ref to see if it can be useful
       - name: Get Github ref
         run: |
           echo ${GITHUB_REF#refs/*/}
