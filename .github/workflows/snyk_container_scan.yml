@@ -44,5 +44,6 @@ jobs:
       - name: Scan Cli container scan
         run: snyk container monitor ${IMAGE_NAME} --app-vulns
 
+      # Run a snyk container test
       - name: Snyk Container Test
         run: snyk container test ${IMAGE_NAME} --username=${DOCKERHUB_USER} --password=${DOCKERHUB_TOKEN}
