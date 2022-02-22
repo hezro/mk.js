@@ -14,7 +14,6 @@ jobs:
       IMAGE_NAME: hezro/mk:latest
       
     steps:
-      - name: Checkout code
       - uses: actions/checkout@v2
       
       - name: Get Github ref 
