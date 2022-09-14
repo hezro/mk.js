@@ -18,7 +18,7 @@ For the network game you need to install the server:
     npm install
     node server.js
 
-The server will be started on port `55555`. Open your browser and go to `http://localhost:55555`. Both players must enter the same game name to play together.
+The server will be started on port `55555`. Open your browser and go to `http://localhost:55555`. Both players must enter the same game name to play together..
 
 # Configuration
 
