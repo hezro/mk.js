@@ -1,0 +1,21 @@
+name: Snyk SCA and SAST Scans
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  snyk-pipeline:
+    runs-on: ubuntu-latest
+    name: Snyk SCA and SAST Scans
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    steps:      
+      - uses: actions/checkout@v2
+      #- name: Install packages for JuiceShop
+        #run: npm install --loglevel=error
+
+      - name: Download Snyk and authenticate
+        run: |
+         sudo npm install -g snyk@latest
+         snyk auth ${SNYK_TOKEN}
