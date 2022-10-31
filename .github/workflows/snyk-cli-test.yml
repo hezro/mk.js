@@ -2,7 +2,7 @@ name: Snyk SCA and SAST Scans
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   snyk-pipeline:
