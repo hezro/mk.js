@@ -10,6 +10,6 @@ on:
 
 jobs:
   code-scan:
-    uses: ${{ github.workspace }}/.github/workflows/test-gha.yml@master
+    uses: ./.github/workflows/test-gha.yml
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
