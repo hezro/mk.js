@@ -1,0 +1,43 @@
+name: "Snyk SCA scan"
+
+on:
+  workflow_call:
+    inputs:
+      solution:
+        description: "Path to package.json file"
+        required: false
+        type: string
+        default: 'package.json'
+      snyk-severity-threshold:
+        required: false
+        type: string
+        default: medium
+      snyk-fail-on:
+        required: false
+        type: string
+        default: patchable
+    secrets:
+      snyk-token:
+        description: "API token for Snyk"
+        required: true
+
+jobs:
+  build:
+    name: SCA scan with Snyk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: npm install
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --file=${{ inputs.solution }} --fail-on=${{ inputs.snyk-fail-on }} --severity-threshold=${{ inputs.snyk-severity-threshold }} --sarif-file-output=snyk-scan.sarif     
+          command: test
+
+      - name: Upload Results
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
+        with:
+          sarif_file: snyk-scan.sarif
