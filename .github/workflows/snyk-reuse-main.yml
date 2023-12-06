@@ -35,7 +35,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --file=${{ inputs.solution }} --fail-on=${{ inputs.snyk-fail-on }} --severity-threshold=${{ inputs.snyk-severity-threshold }} --sarif-file-output=snyk-scan.sarif     
+          args: --file=./server/package.json --fail-on=${{ inputs.snyk-fail-on }} --severity-threshold=${{ inputs.snyk-severity-threshold }} --sarif-file-output=snyk-scan.sarif     
           command: test
 
       - name: Upload Results
