@@ -15,7 +15,7 @@ on:
       snyk-fail-on:
         required: false
         type: string
-        default: patchable
+        default: all
     secrets:
       SNYK_TOKEN:
         description: "API token for Snyk"
