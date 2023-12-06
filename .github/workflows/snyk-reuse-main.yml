@@ -17,7 +17,7 @@ on:
         type: string
         default: patchable
     secrets:
-      snyk-token:
+      SNYK_TOKEN:
         description: "API token for Snyk"
         required: true
 
