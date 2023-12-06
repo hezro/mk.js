@@ -10,5 +10,7 @@ on:
 jobs:
   code-scan:
     uses: ./.github/workflows/snyk-reuse-main.yml
+    with:
+      inputs.solution: ./server/package.json
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
