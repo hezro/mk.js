@@ -27,7 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - working-directory: ./server
+      - name: Set working directory
+        working-directory: ./server
       - run: npm install
       - run: ls
       - name: Run Snyk to check for vulnerabilities
