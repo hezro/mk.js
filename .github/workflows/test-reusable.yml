@@ -11,6 +11,6 @@ on:
 
 jobs:
   code-scan:
-    uses: ./.github/workflows/test-gha.yml
+    uses: ./.github/workflows/snyk-reuse-main.yml
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
