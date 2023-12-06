@@ -12,5 +12,6 @@ jobs:
     uses: ./.github/workflows/snyk-reuse-main.yml
     with:
       solution: ./server/package.json
+      snyk-fail-on: upgradable
     secrets:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
