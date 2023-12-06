@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Setup working dir
-        working-directory: ./app
+        working-directory: ./server
         run: npm install
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
