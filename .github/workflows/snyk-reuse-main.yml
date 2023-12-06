@@ -28,6 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - run: npm install
+      - run: ls
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
         env:
