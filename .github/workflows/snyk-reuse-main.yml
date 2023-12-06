@@ -7,7 +7,7 @@ on:
         description: "Path to package.json file"
         required: false
         type: string
-        default: '/server/package.json'
+        default: 'package.json'
       snyk-severity-threshold:
         required: false
         type: string
@@ -27,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - working-directory: ./server
       - run: npm install
       - run: ls
       - name: Run Snyk to check for vulnerabilities
