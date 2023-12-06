@@ -7,7 +7,7 @@ on:
         description: "Path to package.json file"
         required: false
         type: string
-        default: 'package.json'
+        default: '/server/package.json'
       snyk-severity-threshold:
         required: false
         type: string
